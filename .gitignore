@@ -8,3 +8,6 @@ codex/
 
 # Build output (rebuild with scripts/prepare-deploy.sh)
 dist/
+
+# Internal notes
+docs/

@@ -3625,6 +3625,26 @@ body[data-theme="emerald-glass"] .footer {
     gap: 0.62rem;
   }
 
+  body[data-theme="emerald-glass"] #skills {
+    margin-top: 2rem;
+    padding-top: 1.15rem;
+  }
+
+  body[data-theme="emerald-glass"] #skills h2 {
+    font-size: 1.52rem;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-bottom: 0.62rem;
+  }
+
+  body[data-theme="emerald-glass"] #skills .section-lede {
+    font-size: 0.92rem;
+    line-height: 1.46;
+    margin: 0 0 1rem;
+    max-width: 100%;
+  }
+
   body[data-theme="emerald-glass"] .capability-tag,
   body[data-theme="emerald-glass"] .ai-project-tag {
     white-space: normal;

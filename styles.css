@@ -3562,6 +3562,8 @@ body[data-theme="emerald-glass"] .footer {
     letter-spacing: -0.015em;
     color: #0f2d24;
     margin-bottom: 0.52rem;
+    margin-left: 5px;
+    padding-right: 5px;
   }
 
   body[data-theme="emerald-glass"] #skills .section-lede,
@@ -3570,6 +3572,8 @@ body[data-theme="emerald-glass"] .footer {
     line-height: 1.42;
     color: #4b665c;
     margin-bottom: 0.78rem;
+    margin-left: 5px;
+    padding-right: 5px;
   }
 
   body[data-theme="emerald-glass"] .capability-card,
@@ -3639,10 +3643,13 @@ body[data-theme="emerald-glass"] .footer {
   }
 
   body[data-theme="emerald-glass"] #skills .section-lede {
-    font-size: 0.92rem;
-    line-height: 1.46;
+    font-size: 0.88rem;
+    line-height: 1.42;
+    color: #567166;
     margin: 0 0 1rem;
-    max-width: 100%;
+    margin-left: 5px;
+    max-width: 34ch;
+    text-wrap: balance;
   }
 
   body[data-theme="emerald-glass"] .capability-tag,

@@ -1,0 +1,10 @@
+# Private files
+private-assets/
+
+# OS / editor noise
+.DS_Store
+.vscode/
+codex/
+
+# Build output (rebuild with scripts/prepare-deploy.sh)
+dist/

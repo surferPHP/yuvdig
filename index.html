@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yuv Dig | Portfolio</title>
+    <meta name="description" content="Technical Product Operations leader bridging Product, Engineering, and Enterprise customers." />
+    <link rel="icon" type="image/png" href="assets/icons/globalIcon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-theme="emerald-glass">
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+
+    <header class="site-header">
+      <nav class="nav">
+        <a href="#impact">Impact</a>
+        <a href="#roles">Target Roles</a>
+        <a href="#skills">Capabilities</a>
+        <a href="#ai-projects">AI Projects</a>
+        <a href="#experience">Experience</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-header" id="headerLinkedin" href="#" target="_blank" rel="noreferrer" aria-label="Visit LinkedIn profile">LinkedIn</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" hidden></div>
+    <aside class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile menu" aria-hidden="true">
+      <div class="mobile-menu-head">
+        <p>Navigation</p>
+        <button class="mobile-menu-close" id="mobileMenuClose" type="button" aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="mobile-menu-nav" aria-label="Mobile navigation">
+        <a href="#impact" class="mobile-nav-link">Impact</a>
+        <a href="#roles" class="mobile-nav-link">Target Roles</a>
+        <a href="#skills" class="mobile-nav-link">Capabilities</a>
+        <a href="#ai-projects" class="mobile-nav-link">AI Projects</a>
+        <a href="#experience" class="mobile-nav-link">Experience</a>
+      </nav>
+      <a href="#contact" class="mobile-menu-cta">Email Me</a>
+    </aside>
+
+    <main id="top" class="container">
+      <section class="hero reveal">
+        <div class="hero-layout">
+          <div class="hero-main">
+            <p class="eyebrow" id="location">EU Work Eligible</p>
+            <h1 id="fullName">Yuv Dig</h1>
+            <p class="title" id="title">Senior Product Operations Engineer | Product Owner</p>
+            <p class="tagline" id="tagline"></p>
+            <div class="trust-strip" id="trustStrip">Enterprise delivery experience across InsurTech, AdTech, and automation-driven operations.</div>
+            <div class="hero-signals" id="heroSignals"></div>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" id="primaryCta" href="#contact" aria-label="Book a conversation">Book a conversation</a>
+              <a class="btn btn-secondary" id="cvLink" href="#" target="_blank" rel="noreferrer" aria-label="Download CV">Download CV</a>
+              <a class="btn btn-tertiary" id="linkedinLink" href="#" target="_blank" rel="noreferrer" aria-label="Visit LinkedIn profile">LinkedIn</a>
+            </div>
+          </div>
+          <aside class="hero-spotlight" aria-label="Profile focus">
+            <div class="spot-portrait">
+              <img
+                id="spotImage"
+                alt="Professional portrait"
+                src="assets/icons/meNoBack1.png"
+              />
+              <span class="spot-initials" id="spotInitials">YD</span>
+            </div>
+            <div class="spot-proof" aria-label="Proof metrics">
+              <div class="spot-proof-item">
+                <span class="spot-proof-value">10+</span>
+                <span class="spot-proof-label">Years in SaaS Ops</span>
+              </div>
+              <div class="spot-proof-item">
+                <span class="spot-proof-value">Enterprise</span>
+                <span class="spot-proof-label">Integration Ownership</span>
+              </div>
+              <div class="spot-proof-item">
+                <span class="spot-proof-value">Cross-Functional</span>
+                <span class="spot-proof-label">Product x Eng x Customer</span>
+              </div>
+            </div>
+            <p class="spot-badge">10+ Years Experience</p>
+            <p class="spot-label">Focus</p>
+            <p class="spot-line">Product x Engineering x Customer</p>
+            <p class="spot-line">Enterprise Integrations</p>
+            <p class="spot-line">Escalation to Long-Term Fixes</p>
+            <p class="spot-sub">Designed for hiring speed with technical depth.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reveal" id="impact">
+        <div class="impact-head">
+          <div class="impact-head-main">
+            <h2>Selected <span>Impact</span></h2>
+            <p class="section-lede">Quantifiable results from leading complex technical operations and high-stakes product integrations.</p>
+            <div class="impact-divider" aria-hidden="true"></div>
+          </div>
+          <div class="impact-kicker">
+            <span></span>
+            DRIVING EFFICIENCY
+          </div>
+        </div>
+        <div class="grid" id="impactGrid"></div>
+      </section>
+
+      <section class="section reveal" id="roles">
+        <h2>Target Career Pathways</h2>
+        <div class="chips" id="targetRoles"></div>
+      </section>
+
+      <section class="section reveal" id="experience">
+        <h2>Experience</h2>
+        <div class="timeline" id="experienceTimeline"></div>
+      </section>
+
+      <section class="section reveal" id="skills">
+        <h2>Technical Capabilities</h2>
+        <p class="section-lede">Tools and technologies I use to integrate systems, analyze operational data, automate workflows, and support production platforms.</p>
+        <div class="skill-grid" id="skillsGrid"></div>
+      </section>
+
+      <section class="section reveal" id="ai-projects">
+        <h2>AI Projects &amp; Automation Experiments</h2>
+        <p class="section-lede">Hands-on experiments focused on AI tools, automation, and practical technical prototypes.</p>
+        <div class="grid" id="aiProjectsGrid"></div>
+      </section>
+
+      <section class="section reveal final-cta" id="contact">
+        <h2>Scaling complex platforms through <span>integrations, automation, and product operations.</span></h2>
+        <p class="contact-text">I work at the intersection of product, engineering, and enterprise customers - leading integrations, improving operational workflows, and delivering product initiatives through hands-on implementation and cross-team collaboration.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" id="emailLink" href="#">Hire Me Now</a>
+          <a class="btn btn-ghost" id="contactLinkedinLink" href="#" target="_blank" rel="noreferrer" aria-label="Connect on LinkedIn">LinkedIn Profile</a>
+        </div>
+      </section>
+    </main>
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+  <footer class="footer">
+  <p id="footerText">&copy; All rights reserved 2026.</p>
+</footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

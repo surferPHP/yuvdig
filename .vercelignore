@@ -1,0 +1,6 @@
+# Never deploy private files
+private-assets/
+
+# Local/editor noise
+.DS_Store
+.vscode/

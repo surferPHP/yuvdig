@@ -129,9 +129,9 @@
       "technologies": ["AI APIs", "Automation Scripts", "Data Parsing"]
     },
     {
-      "title": "AI Portfolio Assistant",
-      "description": "Experiment using AI agents with different roles (CTO, Product Manager, HR) to review projects and generate structured feedback.",
-      "technologies": ["Prompt Engineering", "Agent Workflows"]
+      "title": "Portfolio Coach",
+      "description": "Web app for portfolio planning and rebalancing. It identifies allocation gaps, recommends how to deploy new cash, and simulates the portfolio before and after action.",
+      "technologies": ["Portfolio Rebalancing", "Decision Simulation", "Whole Shares", "Market Prices"]
     },
     {
       "title": "Workflow Automation Bots",

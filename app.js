@@ -256,8 +256,9 @@ const renderAIExperiments = (projects = []) => {
     title.textContent = project.title || "AI Project";
 
     const pill = document.createElement("span");
-    pill.className = "ai-project-pill";
-    pill.textContent = "Built Prototype";
+    const statusTone = project.statusTone || "prototype";
+    pill.className = `ai-project-pill ai-project-pill-${statusTone}`;
+    pill.textContent = project.statusLabel || "Built Prototype";
 
     const description = document.createElement("p");
     description.textContent = trimCopy(project.description || "", 180);

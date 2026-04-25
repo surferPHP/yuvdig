@@ -1255,6 +1255,12 @@ h1 {
   white-space: nowrap;
 }
 
+.ai-project-pill-live {
+  border-color: #9fd9c1;
+  background: #dff7eb;
+  color: #0f6c4d;
+}
+
 .capability-tags {
   display: flex;
   flex-wrap: wrap;
@@ -2836,6 +2842,12 @@ body[data-theme="emerald-glass"] .ai-project-pill {
   background: #ebfbf4;
   color: #0d9a6d;
   font-weight: 700;
+}
+
+body[data-theme="emerald-glass"] .ai-project-pill-live {
+  border-color: #95d9bc;
+  background: #d9f8e7;
+  color: #0a7f58;
 }
 
 body[data-theme="emerald-glass"] .capability-tag,

@@ -922,6 +922,7 @@ h1 {
 
 #impactGrid {
   gap: 1rem;
+  align-items: start;
 }
 
 #impactGrid .impact-card {
@@ -929,7 +930,8 @@ h1 {
   border-left: 1px solid color-mix(in srgb, var(--line) 85%, transparent);
   border-radius: 22px;
   padding: 1.2rem 1.25rem 1.25rem;
-  min-height: 260px;
+  min-height: 0;
+  align-self: start;
   background: linear-gradient(170deg, color-mix(in srgb, var(--surface) 98%, white 2%), color-mix(in srgb, var(--surface-2) 93%, white 7%));
   box-shadow: 0 8px 16px rgba(12, 26, 24, 0.06);
 }
@@ -1175,6 +1177,7 @@ h1 {
 
   .role-left::after,
   .role-right::after {
+    top: 1.05rem;
     left: -1.15rem;
     right: auto;
     transform: none;
@@ -2502,7 +2505,7 @@ body[data-theme="emerald-glass"] #impactGrid .impact-card {
   border: 1px solid rgba(124, 181, 161, 0.28);
   background: linear-gradient(170deg, #f8fdfb 0%, #f1f8f4 100%);
   box-shadow: 0 8px 16px rgba(13, 44, 35, 0.07);
-  min-height: 270px;
+  min-height: 0;
 }
 
 body[data-theme="emerald-glass"] .impact-card-value {
@@ -3483,6 +3486,7 @@ body[data-theme="emerald-glass"] .footer {
   body[data-theme="emerald-glass"] #experienceTimeline::before {
     left: 0.42rem;
     width: 2px;
+    top: 0.7rem;
   }
 
   body[data-theme="emerald-glass"] .role-item {
@@ -3494,6 +3498,7 @@ body[data-theme="emerald-glass"] .footer {
 
   body[data-theme="emerald-glass"] .role-left::after,
   body[data-theme="emerald-glass"] .role-right::after {
+    top: 0.72rem;
     left: -0.96rem;
     width: 8px;
     height: 8px;

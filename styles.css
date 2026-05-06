@@ -1110,14 +1110,15 @@ h1 {
 }
 
 .role-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.6rem;
-  align-items: start;
+  position: relative;
+  display: block;
+  padding-right: 5.6rem;
+  margin-bottom: 0.45rem;
 }
 
 .role-title {
   margin: 0;
+  display: block;
   font-weight: 700;
   font-size: 0.9rem;
   line-height: 1.24;
@@ -1126,8 +1127,9 @@ h1 {
 
 .role-period {
   margin: 0;
-  justify-self: end;
-  align-self: start;
+  position: absolute;
+  top: 0;
+  right: 0;
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -2558,7 +2560,6 @@ body[data-theme="emerald-glass"] .role-item::after {
 }
 
 body[data-theme="emerald-glass"] .role-head {
-  align-items: flex-start;
   margin-bottom: 0.45rem;
 }
 

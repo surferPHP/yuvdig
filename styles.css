@@ -1110,20 +1110,24 @@ h1 {
 }
 
 .role-head {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.6rem;
-  flex-wrap: wrap;
-  align-items: baseline;
+  align-items: start;
 }
 
 .role-title {
+  margin: 0;
   font-weight: 700;
   font-size: 0.9rem;
   line-height: 1.24;
+  min-width: 0;
 }
 
 .role-period {
+  margin: 0;
+  justify-self: end;
+  align-self: start;
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.72rem;

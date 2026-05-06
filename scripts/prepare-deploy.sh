@@ -14,10 +14,13 @@ cp "$ROOT_DIR/app.js" "$DIST_DIR/"
 cp -R "$ROOT_DIR/content" "$DIST_DIR/content"
 cp -R "$ROOT_DIR/assets" "$DIST_DIR/assets"
 
-# Optional static docs (public)
-if [ -d "$ROOT_DIR/docs" ]; then
+# Optional static docs (public) - opt-in only
+if [ "${PUBLISH_DOCS:-0}" = "1" ] && [ -d "$ROOT_DIR/docs" ]; then
   cp -R "$ROOT_DIR/docs" "$DIST_DIR/docs"
 fi
 
+# Strip local OS metadata that should never be deployed
+find "$DIST_DIR" -name ".DS_Store" -delete
+
 echo "Prepared safe deploy bundle at: $DIST_DIR"
-echo "Excluded: private-assets/, codex/, local/editor files"
+echo "Excluded: private-assets/, docs/ by default, codex/, local/editor files, .DS_Store"

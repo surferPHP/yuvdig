@@ -16,7 +16,12 @@ const setStyledName = (id, fullName) => {
   }
   const first = parts.slice(0, -1).join(" ");
   const last = parts[parts.length - 1];
-  el.innerHTML = `${first} <span class="name-accent">${last}</span>`;
+  el.textContent = "";
+  el.append(document.createTextNode(`${first} `));
+  const accent = document.createElement("span");
+  accent.className = "name-accent";
+  accent.textContent = last;
+  el.append(accent);
 };
 
 const setInitials = (id, fullName) => {
@@ -31,11 +36,30 @@ const setInitials = (id, fullName) => {
   el.textContent = initials || "PB";
 };
 
+const sanitizeHref = (href, fallback = "#") => {
+  if (!href || href.includes("<ADD_")) return fallback;
+  const raw = String(href).trim();
+  const hasScheme = /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(raw);
+
+  if (!hasScheme) {
+    return raw.startsWith("/") || raw.startsWith("./") || raw.startsWith("../") ? raw : fallback;
+  }
+
+  try {
+    const parsed = new URL(raw);
+    const allowedProtocols = new Set(["https:", "mailto:", "tel:"]);
+    return allowedProtocols.has(parsed.protocol) ? parsed.href : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 const setHref = (id, href, fallback = "#") => {
   const el = document.getElementById(id);
   if (!el) return;
-  el.href = href && !href.includes("<ADD_") ? href : fallback;
-  if (el.href.endsWith("#")) {
+  const safeHref = sanitizeHref(href, fallback);
+  el.setAttribute("href", safeHref);
+  if (safeHref === "#") {
     el.classList.add("is-disabled");
     el.setAttribute("aria-disabled", "true");
     el.title = "Link will be added soon";
@@ -283,6 +307,22 @@ const renderCases = (cases = []) => {
   if (!parent) return;
   parent.innerHTML = "";
 
+  const createCaseBlock = (label, value) => {
+    const block = document.createElement("div");
+    block.className = "case-block";
+
+    const blockLabel = document.createElement("p");
+    blockLabel.className = "case-label";
+    blockLabel.textContent = label;
+
+    const blockValue = document.createElement("p");
+    blockValue.className = "case-value";
+    blockValue.textContent = value || "";
+
+    block.append(blockLabel, blockValue);
+    return block;
+  };
+
   cases.forEach((item) => {
     const card = document.createElement("article");
     card.className = "card case-card";
@@ -297,13 +337,8 @@ const renderCases = (cases = []) => {
     const body = document.createElement("div");
     body.className = "case-body";
 
-    const actionBlock = document.createElement("div");
-    actionBlock.className = "case-block";
-    actionBlock.innerHTML = `<p class="case-label">Action</p><p class="case-value">${item.action || ""}</p>`;
-
-    const outcomeBlock = document.createElement("div");
-    outcomeBlock.className = "case-block";
-    outcomeBlock.innerHTML = `<p class="case-label">Outcome</p><p class="case-value">${item.outcome || ""}</p>`;
+    const actionBlock = createCaseBlock("Action", item.action);
+    const outcomeBlock = createCaseBlock("Outcome", item.outcome);
 
     const toolsWrap = document.createElement("div");
     toolsWrap.className = "case-tools";

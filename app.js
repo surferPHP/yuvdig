@@ -268,36 +268,76 @@ const renderAIExperiments = (projects = []) => {
   if (!parent) return;
   parent.innerHTML = "";
 
+  const categoryConfig = {
+    prototype: { label: "POC / Prototype", marker: "LAB", hint: "Early concept validated through hands-on testing." },
+    automation: { label: "Automation System", marker: "FLOW", hint: "Process-driven tools built to remove repeat manual work." },
+    product: { label: "Working Software", marker: "LIVE", hint: "Usable software with a clearer product shape and workflow." }
+  };
+
   projects.slice(0, 3).forEach((project) => {
+    const category = project.category || (project.statusTone === "live" ? "product" : "prototype");
+    const categoryMeta = categoryConfig[category] || categoryConfig.prototype;
+
     const card = document.createElement("article");
-    card.className = "card ai-project-card";
+    card.className = `card ai-project-card ai-project-card-${category}`;
 
     const head = document.createElement("div");
     head.className = "ai-project-head";
+
+    const kicker = document.createElement("div");
+    kicker.className = "ai-project-kicker";
+
+    const marker = document.createElement("span");
+    marker.className = "ai-project-kicker-mark";
+    marker.textContent = categoryMeta.marker;
+
+    const categoryLabel = document.createElement("span");
+    categoryLabel.className = "ai-project-kicker-label";
+    categoryLabel.textContent = project.categoryLabel || categoryMeta.label;
+
+    const topRow = document.createElement("div");
+    topRow.className = "ai-project-head-main";
 
     const title = document.createElement("h3");
     title.className = "ai-project-title";
     title.textContent = project.title || "AI Project";
 
-    const pill = document.createElement("span");
-    const statusTone = project.statusTone || "prototype";
-    pill.className = `ai-project-pill ai-project-pill-${statusTone}`;
-    pill.textContent = project.statusLabel || "Built Prototype";
+    const typeHint = document.createElement("p");
+    typeHint.className = "ai-project-type";
+    typeHint.textContent = categoryMeta.hint;
 
+    const fullDescription = project.description || "";
     const description = document.createElement("p");
-    description.textContent = trimCopy(project.description || "", 180);
+    description.className = "ai-project-description";
+    description.textContent = fullDescription;
+
+    const shouldShowToggle = fullDescription.trim().length > 110;
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "ai-project-toggle";
+    toggle.textContent = "Read more";
+    toggle.hidden = !shouldShowToggle;
+    toggle.setAttribute("aria-expanded", "false");
+
+    toggle.addEventListener("click", () => {
+      const isExpanded = description.classList.toggle("is-expanded");
+      toggle.textContent = isExpanded ? "Read less" : "Read more";
+      toggle.setAttribute("aria-expanded", String(isExpanded));
+    });
 
     const tags = document.createElement("div");
     tags.className = "ai-project-tags";
-    (project.technologies || []).forEach((tech) => {
+    (project.technologies || []).slice(0, 2).forEach((tech) => {
       const chip = document.createElement("span");
       chip.className = "ai-project-tag";
       chip.textContent = tech;
       tags.appendChild(chip);
     });
 
-    head.append(title, pill);
-    card.append(head, description, tags);
+    kicker.append(marker, categoryLabel);
+    topRow.append(title);
+    head.append(kicker, topRow, typeHint);
+    card.append(head, description, toggle, tags);
     parent.appendChild(card);
   });
 };

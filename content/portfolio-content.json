@@ -127,6 +127,8 @@
       "title": "AI Job Matching Agent",
       "description": "Prototype that analyzes job descriptions, compares them with a CV, and generates a structured fit score and salary expectations.",
       "technologies": ["AI APIs", "Automation Scripts", "Data Parsing"],
+      "category": "prototype",
+      "categoryLabel": "POC / Prototype",
       "statusLabel": "Built Prototype",
       "statusTone": "prototype"
     },
@@ -134,6 +136,8 @@
       "title": "Portfolio Coach",
       "description": "Web app for portfolio planning and rebalancing. It identifies allocation gaps, recommends how to deploy new cash, and simulates the portfolio before and after action.",
       "technologies": ["Portfolio Rebalancing", "Decision Simulation", "Whole Shares", "Market Prices"],
+      "category": "product",
+      "categoryLabel": "Working Software",
       "statusLabel": "Working Web App",
       "statusTone": "live"
     },
@@ -141,6 +145,8 @@
       "title": "Workflow Automation Bots",
       "description": "Small tools and scripts designed to automate repetitive tasks and prototype new integration and operational workflows.",
       "technologies": ["Python", "Node.js", "APIs"],
+      "category": "automation",
+      "categoryLabel": "Automation System",
       "statusLabel": "Working Automations",
       "statusTone": "live"
     }

@@ -798,7 +798,7 @@ const hydrate = (data) => {
       emailLink.setAttribute("aria-label", "Open WhatsApp chat");
       emailLink.title = "Opens WhatsApp chat";
     } else {
-      setText("emailLink", "Hire Me Now");
+      setText("emailLink", "Let's Talk");
       emailLink.removeAttribute("target");
       emailLink.removeAttribute("rel");
       emailLink.setAttribute("aria-label", "Send email");

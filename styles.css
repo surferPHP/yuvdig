@@ -450,7 +450,7 @@ body[data-theme="midnight-glass"]::before {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: linear-gradient(140deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.6));
-  padding: 0.95rem;
+  padding: 0.9rem;
   box-shadow: var(--shadow);
 }
 
@@ -469,18 +469,18 @@ body[data-theme="midnight-glass"]::before {
 }
 
 .spot-sub {
-  margin: 0.8rem 0 0;
+  margin: 0.7rem 0 0;
   font-size: 0.82rem;
   color: var(--ink-soft);
 }
 
 .spot-portrait {
   border-radius: 24px;
-  height: 220px;
+  height: 214px;
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.72rem;
   overflow: hidden;
   position: relative;
 }
@@ -596,7 +596,7 @@ h1 {
 .hero-ctas {
   display: flex;
   gap: 0.75rem;
-  margin-top: 1.4rem;
+  margin-top: 1.2rem;
   flex-wrap: wrap;
 }
 
@@ -755,7 +755,7 @@ h1 {
 .section {
   margin-top: 2.2rem;
   padding-top: 1.4rem;
-  border-top: 1px dashed var(--line);
+  border-top: 0;
 }
 
 .industry-banner {
@@ -1231,30 +1231,21 @@ h1 {
 
 .capability-card {
   --capability-accent: var(--accent);
-  --capability-soft: color-mix(in srgb, var(--accent) 8%, var(--surface));
   grid-column: span 4;
   display: flex;
   flex-direction: column;
   min-height: 176px;
   border-radius: 18px;
   padding: 0.88rem 0.92rem 0.82rem;
-  border: 1px solid color-mix(in srgb, var(--capability-accent) 12%, var(--line));
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--capability-accent) 9%, transparent), transparent 42%),
-    linear-gradient(180deg, color-mix(in srgb, var(--surface) 98%, white 2%), color-mix(in srgb, var(--capability-soft) 30%, var(--surface) 70%));
-  box-shadow: 0 8px 20px rgba(18, 17, 13, 0.045);
+  border: 1px solid color-mix(in srgb, var(--line) 92%, white 8%);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 99%, white 1%), color-mix(in srgb, var(--surface-2) 12%, var(--surface) 88%));
+  box-shadow: 0 6px 16px rgba(18, 17, 13, 0.035);
   position: relative;
   overflow: hidden;
 }
 
 .capability-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  background: color-mix(in srgb, var(--capability-accent) 72%, white 28%);
+  content: none;
 }
 
 .capability-card-integrations {
@@ -1285,8 +1276,8 @@ h1 {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--capability-accent) 70%, var(--ink));
-  opacity: 0.82;
+  color: color-mix(in srgb, var(--capability-accent) 62%, var(--ink-soft));
+  opacity: 0.76;
 }
 
 .ai-project-head {
@@ -1334,16 +1325,16 @@ h1 {
   flex-wrap: wrap;
   gap: 0.4rem;
   margin-top: auto;
-  padding-top: 0.6rem;
+  padding-top: 0.52rem;
 }
 
 .capability-tag {
-  border: 1px solid color-mix(in srgb, var(--capability-accent) 18%, var(--line));
+  border: 1px solid color-mix(in srgb, var(--capability-accent) 12%, var(--line));
   border-radius: 999px;
   padding: 0.18rem 0.52rem;
   font-size: 0.72rem;
-  color: color-mix(in srgb, var(--capability-accent) 28%, var(--ink-soft));
-  background: color-mix(in srgb, var(--capability-accent) 7%, var(--surface));
+  color: color-mix(in srgb, var(--capability-accent) 22%, var(--ink-soft));
+  background: color-mix(in srgb, var(--capability-accent) 4%, var(--surface));
 }
 
 #ai-projects {
@@ -2262,7 +2253,7 @@ body[data-theme="emerald-glass"] .btn-link:hover {
 }
 
 body[data-theme="emerald-glass"] .section {
-  border-top-color: rgba(20, 93, 66, 0.16);
+  border-top: 0;
   margin-top: 1.55rem;
   padding-top: 1.05rem;
 }
@@ -2626,7 +2617,7 @@ body[data-theme="emerald-glass"] .spot-sub {
 body[data-theme="emerald-glass"] .section {
   margin-top: 2.1rem;
   padding-top: 2rem;
-  border-top-color: #e5ecec;
+  border-top: 0;
 }
 
 body[data-theme="emerald-glass"] .section h2 {
@@ -3027,11 +3018,9 @@ body[data-theme="emerald-glass"] #ai-projects .ai-project-card::before {
 
 body[data-theme="emerald-glass"] #skills .capability-card {
   border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--capability-accent) 14%, #dce9e5);
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--capability-accent) 10%, transparent), transparent 40%),
-    linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, var(--capability-accent) 6%, #f7fcfa) 100%);
-  box-shadow: 0 6px 14px rgba(13, 57, 40, 0.07);
+  border: 1px solid #dce9e5;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fcfa 100%);
+  box-shadow: 0 5px 12px rgba(13, 57, 40, 0.055);
   padding-left: 0.92rem;
   padding-right: 0.92rem;
 }

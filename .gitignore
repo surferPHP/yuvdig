@@ -6,7 +6,7 @@ private-assets/
 .vscode/
 codex/
 
-# Build output (rebuild with scripts/prepare-deploy.sh)
+# Build output
 dist/
 
 # Internal notes

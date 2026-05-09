@@ -229,20 +229,42 @@ const renderSkills = (capabilities = []) => {
   parent.classList.remove("skill-grid-panels");
   parent.classList.add("capabilities-grid");
 
-  capabilities.slice(0, 4).forEach((capability) => {
+  const selectedCapabilities = [
+    "Integrations & APIs",
+    "Data & Analytics",
+    "Monitoring & Production Operations"
+  ];
+
+  const capabilityToneMap = {
+    "Integrations & APIs": "integrations",
+    "Data & Analytics": "analytics",
+    "Monitoring & Production Operations": "operations"
+  };
+
+  const capabilityLabelMap = {
+    integrations: "CONNECT",
+    analytics: "ANALYZE",
+    operations: "OPERATE"
+  };
+
+  capabilities
+    .filter((capability) => selectedCapabilities.includes(capability.title))
+    .sort((a, b) => selectedCapabilities.indexOf(a.title) - selectedCapabilities.indexOf(b.title))
+    .forEach((capability) => {
     const card = document.createElement("article");
-    card.className = "card capability-card";
+    const tone = capabilityToneMap[capability.title] || "default";
+    card.className = `card capability-card capability-card-${tone}`;
 
     const head = document.createElement("div");
     head.className = "capability-head";
 
+    const kicker = document.createElement("span");
+    kicker.className = "capability-kicker";
+    kicker.textContent = capabilityLabelMap[tone] || "CAPABILITY";
+
     const heading = document.createElement("h3");
     heading.className = "capability-title";
     heading.textContent = capability.title || "Capability";
-
-    const pill = document.createElement("span");
-    pill.className = "capability-pill";
-    pill.textContent = "Core Capability";
 
     const description = document.createElement("p");
     description.className = "capability-description";
@@ -250,14 +272,14 @@ const renderSkills = (capabilities = []) => {
 
     const tags = document.createElement("div");
     tags.className = "capability-tags";
-    (capability.tags || []).forEach((tag) => {
+    (capability.tags || []).slice(0, 3).forEach((tag) => {
       const chip = document.createElement("span");
       chip.className = "capability-tag";
       chip.textContent = tag;
       tags.appendChild(chip);
     });
 
-    head.append(heading, pill);
+    head.append(kicker, heading);
     card.append(head, description, tags);
     parent.appendChild(card);
   });

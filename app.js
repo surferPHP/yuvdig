@@ -747,7 +747,6 @@ const hydrate = (data) => {
   setText("location", profile.location);
   setStyledName("fullName", profile.fullName);
   setInitials("spotInitials", profile.fullName);
-  setText("title", profile.title);
   setText("tagline", profile.tagline);
 
   setHref("cvLink", profile.cvUrl || "#download-cv", "#download-cv");

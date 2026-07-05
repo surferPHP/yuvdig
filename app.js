@@ -487,7 +487,7 @@ const buildCvLines = (data) => {
   pushCenter((profile.fullName || "Candidate Name").toUpperCase(), true, 16);
   const contactLine = buildContactLine(profile);
   if (contactLine) pushCenter(contactLine, false, 9);
-  pushCenter(profile.title || "Senior Technical Account Manager / Product Owner - CX", true, 10);
+  pushCenter(profile.title || "Senior Technical Solutions Engineer / Product Owner - CX", true, 10);
   push("", false, true);
 
   pushSection("ABOUT ME");

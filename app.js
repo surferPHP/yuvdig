@@ -293,15 +293,17 @@ const renderAIExperiments = (projects = []) => {
   const categoryConfig = {
     prototype: { label: "POC / Prototype", marker: "LAB", hint: "Early concept validated through hands-on testing." },
     automation: { label: "Automation System", marker: "FLOW", hint: "Process-driven tools built to remove repeat manual work." },
-    product: { label: "Working Software", marker: "LIVE", hint: "Usable software with a clearer product shape and workflow." }
+    product: { label: "Working Software", marker: "LIVE", hint: "Usable software with a clearer product shape and workflow." },
+    agent: { label: "Personal AI System", marker: "AGENT", hint: "Personal automation system with repeatable logic and reusable outputs." }
   };
 
   projects.slice(0, 4).forEach((project) => {
     const category = project.category || (project.statusTone === "live" ? "product" : "prototype");
     const categoryMeta = categoryConfig[category] || categoryConfig.prototype;
+    const isFeatured = Boolean(project.featured);
 
     const card = document.createElement("article");
-    card.className = `card ai-project-card ai-project-card-${category}`;
+    card.className = `card ai-project-card ai-project-card-${category}${isFeatured ? " ai-project-card-featured" : ""}`;
 
     const head = document.createElement("div");
     head.className = "ai-project-head";
@@ -326,7 +328,7 @@ const renderAIExperiments = (projects = []) => {
 
     const typeHint = document.createElement("p");
     typeHint.className = "ai-project-type";
-    typeHint.textContent = categoryMeta.hint;
+    typeHint.textContent = project.typeHint || categoryMeta.hint;
 
     const fullDescription = project.description || "";
     const description = document.createElement("p");
@@ -347,9 +349,18 @@ const renderAIExperiments = (projects = []) => {
       toggle.setAttribute("aria-expanded", String(isExpanded));
     });
 
+    const highlights = document.createElement("ul");
+    highlights.className = "ai-project-feature-list";
+    highlights.hidden = !isFeatured;
+    (project.highlights || []).slice(0, 3).forEach((highlight) => {
+      const item = document.createElement("li");
+      item.textContent = highlight;
+      highlights.appendChild(item);
+    });
+
     const tags = document.createElement("div");
     tags.className = "ai-project-tags";
-    (project.technologies || []).slice(0, 2).forEach((tech) => {
+    (project.technologies || []).slice(0, isFeatured ? 4 : 2).forEach((tech) => {
       const chip = document.createElement("span");
       chip.className = "ai-project-tag";
       chip.textContent = tech;
@@ -359,7 +370,7 @@ const renderAIExperiments = (projects = []) => {
     kicker.append(marker, categoryLabel);
     topRow.append(title);
     head.append(kicker, topRow, typeHint);
-    card.append(head, description, toggle, tags);
+    card.append(head, description, toggle, highlights, tags);
     parent.appendChild(card);
   });
 };

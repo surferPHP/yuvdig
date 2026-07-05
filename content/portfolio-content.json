@@ -153,11 +153,14 @@
     {
       "title": "JobHuntAgent",
       "description": "Personal AI-powered job-search automation system built for my own workflow. It helps discover relevant technical roles, maintain a growing company and source database, deduplicate results across runs, classify opportunities by fit, and export structured job-search reports to Excel.",
-      "technologies": ["AI Automation", "Job Search Agent", "Excel Export"],
-      "category": "automation",
-      "categoryLabel": "Personal Productivity Tool",
+      "typeHint": "Personal job-search operating system with source discovery, dedup history, fit logic, and Excel reporting.",
+      "technologies": ["AI Automation", "Source Discovery", "Dedup History", "Excel Reports"],
+      "highlights": ["Daily role discovery", "Company/source refresh", "Reusable Excel history"],
+      "category": "agent",
+      "categoryLabel": "Personal AI System",
       "statusLabel": "Built System",
-      "statusTone": "live"
+      "statusTone": "live",
+      "featured": true
     }
   ],
   "jobHuntAgentProject": {

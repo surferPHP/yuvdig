@@ -149,8 +149,76 @@
       "categoryLabel": "Automation System",
       "statusLabel": "Working Automations",
       "statusTone": "live"
+    },
+    {
+      "title": "JobHuntAgent",
+      "description": "Personal AI-powered job-search automation system built for my own workflow. It helps discover relevant technical roles, maintain a growing company and source database, deduplicate results across runs, classify opportunities by fit, and export structured job-search reports to Excel.",
+      "technologies": ["AI Automation", "Job Search Agent", "Excel Export"],
+      "category": "automation",
+      "categoryLabel": "Personal Productivity Tool",
+      "statusLabel": "Built System",
+      "statusTone": "live"
     }
   ],
+  "jobHuntAgentProject": {
+    "name": "JobHuntAgent",
+    "type": "AI Automation / Job Search Agent / Personal Productivity Tool",
+    "summary": "JobHuntAgent is a personal AI-powered job-search automation system that helps me discover relevant technical roles, maintain a growing company and source database, deduplicate results across runs, classify opportunities by fit, and export structured job-search reports to Excel.",
+    "positioning": "Built as a personal productivity and AI automation system for my own job-search workflow, not as a commercial product.",
+    "workflows": [
+      {
+        "title": "Daily Job Search Automation",
+        "description": "Runs a structured job-search process based on target role criteria, focused on technical customer-facing SaaS and AI roles across Israel, the Netherlands, Portugal, and relevant Remote Europe / EMEA / global opportunities.",
+        "points": [
+          "Targets Technical Solutions, Implementation, AI Implementation, Product Operations, Technical Account Management, Forward Deployed, AI Workflow / Automation, Customer Engineer, Professional Services, and Solutions Consulting roles.",
+          "Uses configurable role, company, location, remote-policy, salary-threshold, rejection-rule, and AI-evaluation criteria.",
+          "Outputs structured opportunities instead of an unfiltered list of links."
+        ]
+      },
+      {
+        "title": "Company Source Refresh Automation",
+        "description": "Runs separately from the daily job search and continuously improves the search universe by discovering relevant companies, career pages, ATS sources, and search keywords.",
+        "points": [
+          "Adds high-confidence companies and keywords into the daily search logic.",
+          "Keeps medium and low-confidence sources as manual-verification suggestions.",
+          "Protects the main search flow from noisy source expansion."
+        ]
+      },
+      {
+        "title": "Deduplication Logic",
+        "description": "Prevents repeated opportunities from appearing as new by comparing each run against previous results and a local history layer.",
+        "points": [
+          "Deduplicates by raw URL or direct apply link.",
+          "Deduplicates by company, normalized role title, and location.",
+          "Maintains a Dedup History so future runs can compare against previous results."
+        ]
+      },
+      {
+        "title": "Excel / CSV Export",
+        "description": "Generates structured reports designed to support review, prioritization, and future imports.",
+        "points": [
+          "Exports sheets for Verified Apply Now, Needs Manual Verification, Companies to Monitor, Top 10 Apply First, Search Strategy, Summary, Already Seen / Not New, Dedup History, and Sources.",
+          "Supports a future CSV import and export workflow.",
+          "Keeps output reusable by later automation runs."
+        ]
+      }
+    ],
+    "technicalHighlights": [
+      "Built a structured AI workflow around repeatable job-search logic.",
+      "Designed automation prompts with clear role criteria, exclusion rules, deduplication requirements, and output format.",
+      "Created a two-layer automation strategy: daily job discovery and weekly company/source discovery.",
+      "Added safeguards so source-refresh updates only affect the main search when confidence is high.",
+      "Designed an Excel-based local history mechanism for deduplication.",
+      "Structured the output so it can be reused by future runs."
+    ],
+    "plannedArchitecture": [
+      "CSV imports",
+      "ATS providers such as Lever, Greenhouse, and Ashby",
+      "Public career pages",
+      "AI-based HR fit scoring",
+      "JobHuntAgent dashboard UI"
+    ]
+  },
   "caseStudies": [
     {
       "title": "Enterprise Onboarding & Product Execution (InsurTech)",

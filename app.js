@@ -296,7 +296,7 @@ const renderAIExperiments = (projects = []) => {
     product: { label: "Working Software", marker: "LIVE", hint: "Usable software with a clearer product shape and workflow." }
   };
 
-  projects.slice(0, 3).forEach((project) => {
+  projects.slice(0, 4).forEach((project) => {
     const category = project.category || (project.statusTone === "live" ? "product" : "prototype");
     const categoryMeta = categoryConfig[category] || categoryConfig.prototype;
 
@@ -362,6 +362,91 @@ const renderAIExperiments = (projects = []) => {
     card.append(head, description, toggle, tags);
     parent.appendChild(card);
   });
+};
+
+const renderJobHuntAgentDetail = (project) => {
+  const parent = document.getElementById("jobHuntAgentDetail");
+  if (!parent || !project) return;
+  parent.innerHTML = "";
+
+  const shell = document.createElement("article");
+  shell.className = "job-agent-detail";
+
+  const intro = document.createElement("div");
+  intro.className = "job-agent-intro";
+
+  const eyebrow = document.createElement("p");
+  eyebrow.className = "job-agent-eyebrow";
+  eyebrow.textContent = project.type || "AI Automation Project";
+
+  const title = document.createElement("h3");
+  title.textContent = project.name || "JobHuntAgent";
+
+  const summary = document.createElement("p");
+  summary.className = "job-agent-summary";
+  summary.textContent = project.summary || "";
+
+  const positioning = document.createElement("p");
+  positioning.className = "job-agent-positioning";
+  positioning.textContent = project.positioning || "";
+
+  intro.append(eyebrow, title, summary, positioning);
+
+  const workflowGrid = document.createElement("div");
+  workflowGrid.className = "job-agent-workflows";
+
+  (project.workflows || []).forEach((workflow) => {
+    const card = document.createElement("section");
+    card.className = "job-agent-workflow";
+
+    const heading = document.createElement("h4");
+    heading.textContent = workflow.title || "Workflow";
+
+    const description = document.createElement("p");
+    description.textContent = workflow.description || "";
+
+    const list = document.createElement("ul");
+    (workflow.points || []).forEach((point) => {
+      const item = document.createElement("li");
+      item.textContent = point;
+      list.appendChild(item);
+    });
+
+    card.append(heading, description, list);
+    workflowGrid.appendChild(card);
+  });
+
+  const bottom = document.createElement("div");
+  bottom.className = "job-agent-bottom";
+
+  const highlights = document.createElement("section");
+  highlights.className = "job-agent-panel";
+  const highlightsTitle = document.createElement("h4");
+  highlightsTitle.textContent = "Key Technical Highlights";
+  const highlightsList = document.createElement("ul");
+  (project.technicalHighlights || []).forEach((highlight) => {
+    const item = document.createElement("li");
+    item.textContent = highlight;
+    highlightsList.appendChild(item);
+  });
+  highlights.append(highlightsTitle, highlightsList);
+
+  const future = document.createElement("section");
+  future.className = "job-agent-panel job-agent-panel-muted";
+  const futureTitle = document.createElement("h4");
+  futureTitle.textContent = "Planned Architecture";
+  const futureTags = document.createElement("div");
+  futureTags.className = "job-agent-tags";
+  (project.plannedArchitecture || []).forEach((item) => {
+    const tag = document.createElement("span");
+    tag.textContent = item;
+    futureTags.appendChild(tag);
+  });
+  future.append(futureTitle, futureTags);
+
+  bottom.append(highlights, future);
+  shell.append(intro, workflowGrid, bottom);
+  parent.appendChild(shell);
 };
 
 const renderCases = (cases = []) => {
@@ -741,7 +826,7 @@ const setupBackToTop = () => {
 };
 
 const hydrate = (data) => {
-  const { profile, targetRoles, impactHighlights, experience, technicalCapabilities, aiExperiments, caseStudies, cta } = data;
+  const { profile, targetRoles, impactHighlights, experience, technicalCapabilities, aiExperiments, jobHuntAgentProject, caseStudies, cta } = data;
   const whatsapp = getWhatsAppConfig(profile);
 
   setText("location", profile.location);
@@ -811,6 +896,7 @@ const hydrate = (data) => {
   renderExperience(experience);
   renderSkills(technicalCapabilities);
   renderAIExperiments(aiExperiments);
+  renderJobHuntAgentDetail(jobHuntAgentProject);
   renderCases(caseStudies);
   setupCvDownload(data);
 };

@@ -1005,6 +1005,12 @@ h1 {
   grid-column: span 4;
 }
 
+@media (min-width: 1100px) {
+  #aiProjectsGrid .card {
+    grid-column: span 3;
+  }
+}
+
 #aiProjectsGrid .card h3 {
   margin-bottom: 0.45rem;
 }
@@ -1513,6 +1519,133 @@ h1 {
   font-size: 0.75rem;
   color: color-mix(in srgb, var(--project-accent) 30%, var(--ink-soft));
   background: color-mix(in srgb, var(--project-accent) 7%, var(--surface));
+}
+
+.job-agent-detail {
+  margin-top: 1.15rem;
+  border: 1px solid color-mix(in srgb, #177a67 22%, var(--line));
+  border-radius: 22px;
+  padding: clamp(1rem, 2.4vw, 1.45rem);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, #177a67 12%, transparent), transparent 34%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, white 4%), color-mix(in srgb, #e8f7f1 28%, var(--surface) 72%));
+  box-shadow: 0 18px 48px color-mix(in srgb, #177a67 8%, transparent);
+}
+
+.job-agent-intro {
+  display: grid;
+  gap: 0.45rem;
+  max-width: 980px;
+}
+
+.job-agent-eyebrow {
+  margin: 0;
+  color: color-mix(in srgb, #177a67 68%, var(--ink));
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.job-agent-intro h3,
+.job-agent-workflow h4,
+.job-agent-panel h4 {
+  margin: 0;
+  color: var(--ink);
+}
+
+.job-agent-intro h3 {
+  font-size: clamp(1.28rem, 2.4vw, 1.8rem);
+  line-height: 1.08;
+}
+
+.job-agent-summary,
+.job-agent-positioning,
+.job-agent-workflow p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+.job-agent-summary {
+  max-width: 84ch;
+}
+
+.job-agent-positioning {
+  max-width: 76ch;
+  font-size: 0.9rem;
+  color: color-mix(in srgb, #177a67 40%, var(--ink-soft));
+}
+
+.job-agent-workflows {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.job-agent-workflow,
+.job-agent-panel {
+  border: 1px solid color-mix(in srgb, #177a67 14%, var(--line));
+  border-radius: 16px;
+  padding: 0.9rem;
+  background: color-mix(in srgb, var(--surface) 88%, white 12%);
+}
+
+.job-agent-workflow {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.job-agent-workflow h4,
+.job-agent-panel h4 {
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.job-agent-workflow ul,
+.job-agent-panel ul {
+  display: grid;
+  gap: 0.36rem;
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.job-agent-bottom {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.job-agent-panel-muted {
+  background: color-mix(in srgb, #e8f7f1 42%, var(--surface) 58%);
+}
+
+.job-agent-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.job-agent-tags span {
+  border: 1px solid color-mix(in srgb, #177a67 18%, var(--line));
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+  background: color-mix(in srgb, #177a67 7%, var(--surface));
+  color: color-mix(in srgb, #177a67 34%, var(--ink-soft));
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+@media (min-width: 760px) {
+  .job-agent-workflows,
+  .job-agent-bottom {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .case-meta {

@@ -1,5 +1,5 @@
 const contentPath = "content/portfolio-content.json";
-const cvFileName = "Yuval_Digmal_Product_Operations_CV.pdf";
+const cvFileName = "Yuval_Dig_CV.pdf";
 
 const setText = (id, text) => {
   const el = document.getElementById(id);

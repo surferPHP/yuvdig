@@ -90,6 +90,11 @@ const trimCopy = (text = "", maxLength = 120) => {
   return `${clean.slice(0, maxLength - 1).trimEnd()}…`;
 };
 
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag !== "function") return;
+  window.gtag("event", eventName, params);
+};
+
 const renderRoles = (roles = []) => {
   const parent = document.getElementById("targetRoles");
   parent.innerHTML = "";
@@ -178,6 +183,11 @@ const visualTemplate = [
       text.classList.toggle("is-collapsed", !isExpanded);
       toggle.textContent = isExpanded ? "Read less" : "Read more";
       toggle.setAttribute("aria-expanded", String(isExpanded));
+      trackEvent("read_more_toggle", {
+        section: "impact",
+        card_title: heading.textContent,
+        state: isExpanded ? "expanded" : "collapsed",
+      });
     });
 
     card.append(value, heading, text, toggle);
@@ -346,6 +356,11 @@ const renderAIExperiments = (projects = []) => {
       const isExpanded = description.classList.toggle("is-expanded");
       toggle.textContent = isExpanded ? "Read less" : "Read more";
       toggle.setAttribute("aria-expanded", String(isExpanded));
+      trackEvent("read_more_toggle", {
+        section: "ai_projects",
+        card_title: title.textContent,
+        state: isExpanded ? "expanded" : "collapsed",
+      });
     });
 
     const tags = document.createElement("div");
@@ -734,11 +749,57 @@ const setupBackToTop = () => {
   };
 
   button.addEventListener("click", () => {
+    trackEvent("back_to_top_click", {
+      scroll_y: Math.round(window.scrollY),
+    });
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   window.addEventListener("scroll", updateVisibility, { passive: true });
   updateVisibility();
+};
+
+const getInteractionType = (href = "") => {
+  if (href.startsWith("mailto:")) return "email";
+  if (href.includes("wa.me")) return "whatsapp";
+  if (href.includes("linkedin.com")) return "linkedin";
+  if (href.startsWith("#")) return "section";
+  return "link";
+};
+
+const setupAnalyticsEvents = () => {
+  const contactLinks = [
+    ["primaryCta", "hero_primary"],
+    ["emailLink", "contact_primary"],
+    ["linkedinLink", "hero_linkedin"],
+    ["contactLinkedinLink", "contact_linkedin"],
+    ["headerLinkedin", "header_linkedin"],
+  ];
+
+  contactLinks.forEach(([id, location]) => {
+    const link = document.getElementById(id);
+    if (!link) return;
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href") || "";
+      trackEvent("contact_click", {
+        link_id: id,
+        link_text: link.textContent.trim(),
+        link_type: getInteractionType(href),
+        location,
+      });
+    });
+  });
+
+  document.querySelectorAll(".nav a, .mobile-nav-link, .mobile-menu-cta").forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href") || "";
+      trackEvent("navigation_click", {
+        link_text: link.textContent.trim(),
+        target: href,
+        navigation_area: link.classList.contains("mobile-nav-link") || link.classList.contains("mobile-menu-cta") ? "mobile" : "desktop",
+      });
+    });
+  });
 };
 
 const hydrate = (data) => {
@@ -814,6 +875,7 @@ const hydrate = (data) => {
   renderAIExperiments(aiExperiments);
   renderCases(caseStudies);
   setupCvDownload(data);
+  setupAnalyticsEvents();
 };
 
 const start = async () => {
@@ -862,19 +924,40 @@ const setupMobileMenu = () => {
 
   toggle.addEventListener("click", () => {
     const nextState = toggle.getAttribute("aria-expanded") !== "true";
+    trackEvent(nextState ? "mobile_menu_open" : "mobile_menu_close", {
+      trigger: "toggle",
+    });
     setOpen(nextState);
   });
 
-  closeBtn.addEventListener("click", () => setOpen(false));
-  backdrop.addEventListener("click", () => setOpen(false));
+  closeBtn.addEventListener("click", () => {
+    trackEvent("mobile_menu_close", {
+      trigger: "close_button",
+    });
+    setOpen(false);
+  });
+  backdrop.addEventListener("click", () => {
+    trackEvent("mobile_menu_close", {
+      trigger: "backdrop",
+    });
+    setOpen(false);
+  });
   menu.querySelectorAll(".mobile-nav-link, .mobile-menu-cta").forEach((link) => {
-    link.addEventListener("click", () => setOpen(false));
+    link.addEventListener("click", () => {
+      trackEvent("mobile_menu_close", {
+        trigger: "menu_link",
+      });
+      setOpen(false);
+    });
   });
 
   document.addEventListener("keydown", (event) => {
     const isOpen = menu.classList.contains("is-open");
     if (!isOpen) return;
     if (event.key === "Escape") {
+      trackEvent("mobile_menu_close", {
+        trigger: "escape",
+      });
       setOpen(false);
       return;
     }
